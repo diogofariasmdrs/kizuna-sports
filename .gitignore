@@ -1,0 +1,9 @@
+# Arquivos gerados automaticamente pelo Python.
+__pycache__/
+*.py[cod]
+
+# Ambiente virtual, quando começarmos a usar dependências.
+.venv/
+
+# Configurações privadas, quando forem necessárias.
+.env
