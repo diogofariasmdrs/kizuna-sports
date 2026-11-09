@@ -1,22 +1,20 @@
+import mysql.connector
+from getpass import getpass
 
- # Dados das quadras
-quadra_society = {
-    "nome": "Society 01",
-    "modalidade": "Society",
-    "preco_por_hora": 100,
-    "coberta": True,
-    "capacidade_jogadores": 67
-}
-quadra_areia = {
-    "nome": "Areia 01",
-    "modalidade": "Areia",
-    "preco_por_hora": 60,
-    "coberta": False,
-    "capacidade_jogadores": 50
-}   
+conexao = mysql.connector.connect(
+    host="localhost",
+    port=3306,
+    user="root",
+    password=getpass("Senha do Mysql: "),
+    database="kizuna_sports"
+)
 
-quadras = [quadra_society,quadra_areia]
+cursor = conexao.cursor(dictionary=True)
+cursor.execute("SELECT * FROM quadras ORDER BY nome")
+quadras = cursor.fetchall()
 
+cursor.close
+conexao.close
 
  # Funções
 def mostrar_quadra(dados_quadra):
